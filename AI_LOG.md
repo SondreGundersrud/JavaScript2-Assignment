@@ -11,3 +11,8 @@ Asked Gemini:
 When to use defer and when to use async in head.
 What the different folders do, and what can be deleted.
 Asked to explain what ES6 is and how it worked.
+
+November 9th, 2026:
+Asked Gemini if it would be beneficial to add menu buttons as a <nav> or <ul>. Learned that it is better to use <ul> rather than buttons for this type of navigation.
+Asked for feedback on the structure. I have been unsure whether I liked my previous setup, and tried a new approach with fewer folders.
+Gemini also commented that it wiser to use "const API_SOCIAL = `${BASE_URL}/social`;" instead of the base url + new url part. Will take this into consideration.

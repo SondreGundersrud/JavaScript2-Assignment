@@ -11,7 +11,7 @@ async function displayUserProfile(id) {
 }
 
 // In posts.js (after creating the service)
-import { post } from "./services/apiClient.js";
+import { post } from "./js/api.js";
 
 async function createNewPost(postData) {
 	try {

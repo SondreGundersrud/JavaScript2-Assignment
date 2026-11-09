@@ -1,4 +1,5 @@
 // Handles login, register, etc.
+import * as api from "./api.js";
 
 const userData = {
 	name: "my_username", // Required
