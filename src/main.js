@@ -1,6 +1,9 @@
 // Main application entry point and routing
 
 import "./style.css";
+import { Router } from "./js/Router.js";
+import { routes } from "./js/routes.js";
+import { loginForm } from "./js/login.js";
 // import other stuff here
 
 // Global logic, as in is the user auth'd? Check storage etc.
@@ -8,8 +11,8 @@ import "./style.css";
 const container = document.getElementById("app");
 container.innerHTML = "<h1>Welcome to the FunSial</h1>";
 
-import { Router } from "./Router.js";
-import { routes } from "./routes.js";
+import { Router } from "./js/Router.js";
+import { routes } from "./js/routes.js";
 
 // Get the element where content will be rendered
 const contentElement =

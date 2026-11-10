@@ -1,10 +1,10 @@
 :root {
---background:#F5F6F8;
---surface: #FFFFFF;
---border: #E6E9EE;
---primary: #6F8194;
---text: #1F2328;
---muted-text:#5F6368;
+--background: #0D1117;
+--surface: #161B22;
+--border: #30363D;
+--primary: #8AB4F8;
+--text: #F0F6FC;
+--muted-text: #8B949E;
 
   --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
   --heading: system-ui, 'Segoe UI', Roboto, sans-serif;

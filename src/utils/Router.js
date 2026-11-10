@@ -1,5 +1,3 @@
-import { notFoundView } from "./views.js";
-
 const view = this.routes[path] || notFoundView;
 
 export class Router {
@@ -20,12 +18,12 @@ export class Router {
 	}
 
 	// Find the correct view and render it
-	resolveRoute() {
+	async resolveRoute() {
 		const path = window.location.pathname;
-		// Find the view function for the current path, or use the 404 view
 		const view = this.routes[path] || notFoundView;
 
-		// Render the view's content into our target element
-		this.contentElement.innerHTML = view();
+		// Use 'await' to wait for the view function to finish
+		// (e.g., finish fetching data) before rendering.
+		this.contentElement.innerHTML = await view();
 	}
 }

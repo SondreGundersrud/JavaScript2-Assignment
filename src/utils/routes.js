@@ -1,5 +1,6 @@
 const routes = {
+	404: notFoundView,
 	"/": homePageView,
 	"/profile": profilePageView,
-	"/": contactPageView,
+	"/contact": contactPageView,
 };
