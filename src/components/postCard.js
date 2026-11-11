@@ -1,19 +1,7 @@
-// In posts.js (after creating the service)
+// A function that renders a single post card
+
 import { post } from "./js/api.js";
 
-/**
- * Calculates the sum of two numbers.
- * @param {number} a - The first number to add.
- * @param {number} b - The second number to add.
- * @returns {number} - The sum of the two numbers.
- * @example
- *
-
-js
- * const result = add(5, 10);
- * // expected result: 15
- * ```
- */
 async function createNewPost(postData) {
 	try {
 		const newPost = await post("/social/posts", postData);
@@ -22,3 +10,24 @@ async function createNewPost(postData) {
 		console.error(error.message);
 	}
 }
+
+async function getParallelDataEfficiently() {
+	console.time("EfficientParallel");
+	console.log("Starting user and product fetches...");
+
+	// Start both operations without awaiting them
+	const userPromise = fetchUser(1);
+	const productsPromise = fetchProducts();
+
+	// Now, wait for both to finish in parallel
+	const [user, products] = await Promise.all([
+		userPromise,
+		productsPromise,
+	]);
+
+	console.log("Both fetches have completed.");
+	console.timeEnd("EfficientParallel"); // Total time: ~1000ms (the duration of the longest promise)
+	return { user, products };
+}
+
+getParallelDataEfficiently();

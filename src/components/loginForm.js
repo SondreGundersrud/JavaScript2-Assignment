@@ -4,6 +4,8 @@
 // Responsibility: Orchestrating actions. It responds to user input from the UI layer by calling the appropriate services. When it gets data back, it tells the UI layer what to display.
 // What's in it: Event handler functions like onLoginFormSubmit(event) or handleLoadMoreClick(). It contains the main application logic.
 
+import { loginUser } from "./api/authService.js";
+
 const loginForm = document.createElement("form");
 loginForm.className = "login-form";
 
@@ -39,7 +41,17 @@ loginForm.addEventListener("submit", async (event) => {
 
 document.body.appendChild(loginForm);
 
-export default loginForm;
+export function profileForm(container, onFormSubmit) {
+	container.innerHTML = `<form id="profile-form">
+<label for="username">Username:</label>
+<input type="text" id="username" name="name" value="TestUser" />
+
+<label for="avatar">Avatar:</label>
+<input type="file" id="avatar" name="avatar" />
+
+<button type="submit">Submit</button>
+</form>`;
+}
 
 const userDataRequest = {
 	name: "my_username", // Required
