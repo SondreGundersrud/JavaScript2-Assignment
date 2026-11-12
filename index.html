@@ -9,20 +9,31 @@
 		<meta
 			name="viewport"
 			content="width=device-width, initial-scale=1.0" />
-		<script type="module" src="src/main.js"></script>
 		<!--Above the fold customization -->
 		<link rel="stylesheet" href="/src/style.css" />
-		<title>javascript-2-assignment</title>
+		<script defer type="module" src="/src/main.js"></script>
+		<title>Post.ly</title>
+		<meta
+			name="description"
+			content="Post.ly is a social media platform where users can share posts, connect with friends, and engage with content." />
 	</head>
 	<body>
-		<nav id="app-nav">
-			<a href="/">Feed</a>
-			<a href="/posts">New Post</a>
-			<a href="/profile">Profile</a>
-			<a href="/login">login</a>
-		</nav>
-		<h1>Welcome to the PostyPost</h1>
+		<header>
+			<nav id="app-nav">
+				<ul>
+					<li class="logo">Post.ly</li>
+					<li><a href="/">Feed</a></li>
+					<li><a href="/posts">Create Post</a></li>
+					<li><a href="/profile">Profile</a></li>
+					<li><a href="/login">login</a></li>
+					<li><a href="/register">Register</a></li>
+				</ul>
+			</nav>
+		</header>
 		<main id="app-content"></main>
-		<script type="module" src="/src/main.js"></script>
+		<!-- <script type="module" src="/src/main.js"></script> -->
+		<footer>
+			<p>© 2026 Post.ly. All rights reserved.</p>
+		</footer>
 	</body>
 </html>

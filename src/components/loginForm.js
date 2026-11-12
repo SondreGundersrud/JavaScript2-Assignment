@@ -1,11 +1,36 @@
 // Contains the event listener for the login form
-// 2. The Application / Controller Layer
-// This layer acts as the "glue" between the UI and the underlying services.
-// Responsibility: Orchestrating actions. It responds to user input from the UI layer by calling the appropriate services. When it gets data back, it tells the UI layer what to display.
-// What's in it: Event handler functions like onLoginFormSubmit(event) or handleLoadMoreClick(). It contains the main application logic.
+function renderLoginForm() {
+	const container = document.querySelector("#app-content");
+	if (!container) return;
+	container.innerHTML = `
+		<form id="login-form">
+			<h2>Login</h2>
 
-import { loginUser } from "./api/authService.js";
+			<label for="email">Email:</label> 
+            <input type="email" id="email" name="email" pattern="^[\w\-.]+@(stud\.)?noroff\.no$" title="Email must contain @stud.noroff.no" required />
 
+			<label for="password">Password (min 8 chars):</label>
+			<input type="password" id="password" name="password" minlength="8" maxlength="20" required />
+
+			<button type="submit">Login</button>
+		</form>
+	`;
+	const loginForm = document.querySelector("#login-form");
+	loginForm.addEventListener("submit", onLoginFormSubmit);
+	console.log(
+		"Login form rendered and event listener attached.",
+	);
+}
+
+async function onLoginFormSubmit(event) {
+	event.preventDefault();
+	const formData = new FormData(event.target);
+	const email = formData.get("email");
+	const password = formData.get("password");
+	console.log({ email, password });
+}
+
+export { renderLoginForm, onLoginFormSubmit };
 const loginForm = document.createElement("form");
 loginForm.className = "login-form";
 
@@ -40,49 +65,3 @@ loginForm.addEventListener("submit", async (event) => {
 });
 
 document.body.appendChild(loginForm);
-
-export function profileForm(container, onFormSubmit) {
-	container.innerHTML = `<form id="profile-form">
-<label for="username">Username:</label>
-<input type="text" id="username" name="name" value="TestUser" />
-
-<label for="avatar">Avatar:</label>
-<input type="file" id="avatar" name="avatar" />
-
-<button type="submit">Submit</button>
-</form>`;
-}
-
-const userDataRequest = {
-	name: "my_username", // Required
-	email: "first.last@stud.noroff.no", // Required
-	password: "UzI1NiIsInR5cCI", // Required
-	bio: "This is my profile bio", // Optional
-	avatar: {
-		url: "https://img.service.com/avatar.jpg", // Optional
-		alt: "My avatar alt text", // Optional
-	},
-	banner: {
-		url: "https://img.service.com/banner.jpg", // Optional
-		alt: "My banner alt text", // Optional
-	},
-	venueManager: true, // Optional
-};
-
-const userDataResponse = {
-	data: {
-		name: "my_username",
-		email: "first.last@stud.noroff.no",
-		bio: "This is my profile bio",
-		avatar: {
-			url: "https://img.service.com/avatar.jpg",
-			alt: "My avatar alt text",
-		},
-		banner: {
-			url: "https://img.service.com/banner.jpg",
-			alt: "My banner alt text",
-		},
-		venueManager: true,
-	},
-	meta: {},
-};

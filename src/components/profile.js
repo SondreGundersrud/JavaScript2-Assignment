@@ -1,6 +1,5 @@
 // A valid user ID
-import { BASE_URL } from "../api/apiClient.js";
-import { get } from "./services/apiClient.js";
+import { BASE_URL, get, post } from "../api/apiClient.js";
 
 async function displayUserProfile(id) {
 	try {
@@ -12,8 +11,6 @@ async function displayUserProfile(id) {
 	}
 }
 
-import { post } from "./services/apiClient.js";
-
 async function createNewPost(postData) {
 	try {
 		const newPost = await post("/social/posts", postData);
@@ -24,13 +21,13 @@ async function createNewPost(postData) {
 }
 
 const fetchUserDetails = fetch(
-	`${BASE_URL}/auth/profiles/noroff`,
+	`${BASE_URL}/auth/profiles/`,
 );
 
 async function displayUserProfile(id) {
 	try {
 		const response = await fetch(
-			`https://v2.api.noroff.dev/social/profiles/${id}`,
+			`${BASE_URL}/social/profiles/${id}`,
 		);
 		if (!response.ok) {
 			throw new Error("Could not fetch profile");
@@ -92,4 +89,8 @@ export async function loadProfilePage() {
 	}
 }
 
-loadProfilePage();
+export {
+	loadProfilePage,
+	displayUserProfile,
+	createNewPost,
+};

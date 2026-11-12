@@ -1,14 +1,17 @@
-// Generic fetch client for all requests
 // Documentation: https://docs.noroff.dev/docs/v2
 
-import { load } from "../storage/index.js";
-
 const BASE_URL = "https://v2.api.noroff.dev";
-const AUTH = BASE_URL + "/auth/register";
-const API_KEY = BASE_URL + "/auth/create-api-key";
-const LOGIN = BASE_URL + "/auth/login";
-const REGISTER = BASE_URL + "/auth/register";
-const POSTS = BASE_URL + "/social/posts";
+const API_KEY = `${BASE_URL}/auth/create-api-key`;
+const LOGIN = `${BASE_URL}/auth/login`;
+const REGISTER = `${BASE_URL}/auth/register`;
+const POSTS = `${BASE_URL}/social/posts`;
+const ALL_PROFILES = `${BASE_URL}/social/profiles`;
+const SINGLE_PROFILE = `${BASE_URL}/social/profiles/<name>`;
+const UPDATE_PROFILE = `${BASE_URL}/social/profiles/<name>`;
+const ALL_POSTS_BY_PROFILE = `${BASE_URL}/social/profiles/<name>/posts`;
+const FOLLOW_PROFILE = `${BASE_URL}/social/profiles/<name>/follow`;
+const UNFOLLOW_PROFILE = `${BASE_URL}/social/profiles/<name>/unfollow`;
+const SEARCH_PROFILES = `${BASE_URL}/social/profiles/search?q=<query>`;
 
 async function apiClient(endpoint, options = {}) {
 	const { body, ...customOptions } = options;

@@ -16,3 +16,9 @@ November 9th, 2026:
 Asked Gemini if it would be beneficial to add menu buttons as a <nav> or <ul>. Learned that it is better to use <ul> rather than buttons for this type of navigation.
 Asked for feedback on the structure. I have been unsure whether I liked my previous setup, and tried a new approach with fewer folders.
 Gemini also commented that it wiser to use "const API_SOCIAL = `${BASE_URL}/social`;" instead of the base url + new url part. Will take this into consideration.
+
+November 12th, 2026:
+Asked Gemini how to implement required restrictions on email, username and that sort.
+Asked for debugging of the registerForm, as I was getting an error message on localhost page, telling me there was JS syntax error. Error was due to spelling was wrong, and the registerFromContainer was never decleared.
+ASked for debugging of profile, turns out I have duped the displayUSerProfile(id) 2 times, and was missing a variable.
+Asked for help to explain how to route properly based on what Noroff taught me, and how to controll that the user status on logged in or not.

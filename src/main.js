@@ -2,14 +2,18 @@
 
 import "./style.css";
 import { loginForm } from "./components/loginForm.js";
-import { loadProfilePage } from "./pages/profile.js";
+import { loadProfilePage } from "./components/profile.js";
 import { Router } from "./utils/Router.js";
 import { routes } from "./utils/routes.js";
-import { get } from "./api/apiService.js";
-// Global logic, as in is the user auth'd? Check storage etc.
+import { get } from "./api/apiClient.js";
+
+import {
+	renderRegisterForm,
+	onRegisterFormSubmit,
+} from "./components/registerForm.js";
 
 const container = document.getElementById("app");
-container.innerHTML = "<h1>Welcome to the FunSial</h1>";
+container.innerHTML = "<h1>Welcome to the Post.ly</h1>";
 
 // Get the element where content will be rendered
 const contentElement =
@@ -73,7 +77,7 @@ document
 
 			try {
 				const response = await get(
-					`/old-games?page=${page}&limit=5`,
+					`/posts?page=${page}&limit=5`,
 				);
 				const games = response.data;
 				const meta = response.meta;
