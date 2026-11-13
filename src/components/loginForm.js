@@ -1,16 +1,18 @@
 // Contains the event listener for the login form
-function renderLoginForm() {
+export function renderLoginForm() {
 	const container = document.querySelector("#app-content");
 	if (!container) return;
 	container.innerHTML = `
-		<form id="login-form">
+		<form id="login-form" class="login-form" method="POST">
+			const container = document.getElementById("app");
+			container.innerHTML = "<h1>Welcome to the Post.ly</h1>";
 			<h2>Login</h2>
 
 			<label for="email">Email:</label> 
             <input type="email" id="email" name="email" pattern="^[\w\-.]+@(stud\.)?noroff\.no$" title="Email must contain @stud.noroff.no" required />
 
 			<label for="password">Password (min 8 chars):</label>
-			<input type="password" id="password" name="password" minlength="8" maxlength="20" required />
+			<input type="password" id="password" name="password" minlength="8" required />
 
 			<button type="submit">Login</button>
 		</form>
@@ -31,37 +33,38 @@ async function onLoginFormSubmit(event) {
 }
 
 export { renderLoginForm, onLoginFormSubmit };
-const loginForm = document.createElement("form");
-loginForm.className = "login-form";
 
-const heading = document.createElement("h2");
-heading.textContent = "Login";
-loginForm.appendChild(heading);
+// const loginForm = document.createElement("form");
+// loginForm.className = "login-form";
 
-const nameInput = document.createElement("input");
-nameInput.type = "text";
-nameInput.name = "name";
-nameInput.placeholder = "Username";
-loginForm.appendChild(nameInput);
+// const heading = document.createElement("h2");
+// heading.textContent = "Login";
+// loginForm.appendChild(heading);
 
-const emailInput = document.createElement("input");
-emailInput.type = "email";
-emailInput.name = "email";
-emailInput.placeholder = "Email";
-loginForm.appendChild(emailInput);
+// const nameInput = document.createElement("input");
+// nameInput.type = "text";
+// nameInput.name = "name";
+// nameInput.placeholder = "Username";
+// loginForm.appendChild(nameInput);
 
-const passwordInput = document.createElement("input");
-passwordInput.type = "password";
-passwordInput.name = "password";
-passwordInput.placeholder = "Password";
-loginForm.appendChild(passwordInput);
+// const emailInput = document.createElement("input");
+// emailInput.type = "email";
+// emailInput.name = "email";
+// emailInput.placeholder = "Email";
+// loginForm.appendChild(emailInput);
 
-loginForm.addEventListener("submit", async (event) => {
-	event.preventDefault();
-	const formData = new FormData(loginForm);
-	const name = formData.get("name");
-	const email = formData.get("email");
-	const password = formData.get("password");
-});
+// const passwordInput = document.createElement("input");
+// passwordInput.type = "password";
+// passwordInput.name = "password";
+// passwordInput.placeholder = "Password";
+// loginForm.appendChild(passwordInput);
 
-document.body.appendChild(loginForm);
+// loginForm.addEventListener("submit", async (event) => {
+// 	event.preventDefault();
+// 	const formData = new FormData(loginForm);
+// 	const name = formData.get("name");
+// 	const email = formData.get("email");
+// 	const password = formData.get("password");
+// });
+
+// document.body.appendChild(loginForm);

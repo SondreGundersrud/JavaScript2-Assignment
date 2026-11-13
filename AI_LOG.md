@@ -22,3 +22,6 @@ Asked Gemini how to implement required restrictions on email, username and that 
 Asked for debugging of the registerForm, as I was getting an error message on localhost page, telling me there was JS syntax error. Error was due to spelling was wrong, and the registerFromContainer was never decleared.
 ASked for debugging of profile, turns out I have duped the displayUSerProfile(id) 2 times, and was missing a variable.
 Asked for help to explain how to route properly based on what Noroff taught me, and how to controll that the user status on logged in or not.
+
+November 13th, 2026:
+Asked Gemini to explain why I was not making any progress so I could try another approach. Had some help debugging different code in routes.js and Router.js, but I'm still not being able to properly import these functions and files to the main.js. Will have to look into this tomorrow. In theory, thing should start to render but alas.

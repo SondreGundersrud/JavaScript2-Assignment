@@ -1,19 +1,18 @@
 // Main application entry point and routing
 
 import "./style.css";
-import { loginForm } from "./components/loginForm.js";
-import { loadProfilePage } from "./components/profile.js";
-import { Router } from "./utils/Router.js";
-import { routes } from "./utils/routes.js";
-import { get } from "./api/apiClient.js";
-
+import {
+	renderLoginForm,
+	onLoginFormSubmit,
+} from "./components/loginForm.js";
 import {
 	renderRegisterForm,
 	onRegisterFormSubmit,
 } from "./components/registerForm.js";
-
-const container = document.getElementById("app");
-container.innerHTML = "<h1>Welcome to the Post.ly</h1>";
+import { loadProfilePage } from "./components/profile.js";
+import { Router } from "./utils/Router.js";
+import { routes } from "./utils/routes.js";
+import { get } from "./api/apiClient.js";
 
 // Get the element where content will be rendered
 const contentElement =
@@ -59,8 +58,8 @@ async function getPostDetailsQuickly() {
 document
 	.createElement("button")
 	.addEventListener("click", () => {
-		const gamesContainer = document.getElementById(
-			"games-container",
+		const PostsContainer = document.getElementById(
+			"Posts-container",
 		);
 		const loadMoreButton =
 			document.getElementById("load-more-btn");
@@ -69,8 +68,8 @@ document
 		let currentPage = 1;
 		let isFetching = false;
 
-		// Function to fetch a page of games and render them
-		async function fetchAndRenderGames(page) {
+		// Function to fetch a page of Posts and render them
+		async function fetchAndRenderPosts(page) {
 			isFetching = true;
 			loadMoreButton.textContent = "Loading...";
 			loadMoreButton.disabled = true;
@@ -79,14 +78,14 @@ document
 				const response = await get(
 					`/posts?page=${page}&limit=5`,
 				);
-				const games = response.data;
+				const Posts = response.data;
 				const meta = response.meta;
 
-				// Append new games to the container
-				games.forEach((game) => {
+				// Append new Posts to the container
+				Posts.forEach((game) => {
 					const gameElement = document.createElement("div");
 					gameElement.textContent = game.name;
-					gamesContainer.appendChild(gameElement);
+					PostsContainer.appendChild(gameElement);
 				});
 
 				// Update the button based on the meta data
@@ -97,7 +96,7 @@ document
 					loadMoreButton.disabled = false;
 				}
 			} catch (error) {
-				console.error("Failed to fetch games:", error);
+				console.error("Failed to fetch Posts:", error);
 				loadMoreButton.textContent =
 					"Failed to load. Try again?";
 				loadMoreButton.disabled = false;
@@ -110,12 +109,12 @@ document
 		loadMoreButton.addEventListener("click", () => {
 			if (!isFetching) {
 				currentPage++; // Increment the page number
-				fetchAndRenderGames(currentPage);
+				fetchAndRenderPosts(currentPage);
 			}
 		});
 	});
 
 // Initial load
-fetchAndRenderGames(currentPage);
+fetchAndRenderPosts(currentPage);
 
-getPostDetailsQuickly();
+// getPostDetailsQuickly();
