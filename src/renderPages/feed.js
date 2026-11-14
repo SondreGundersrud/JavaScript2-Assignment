@@ -38,7 +38,7 @@ document
 
 				// Update the button based on the meta data
 				if (meta.isLastPage) {
-					loadMoreButton.style.display = "none"; // Hide button if no more pages
+					loadMoreButton.style.display = "none"; // Hide button if no more renderPage
 				} else {
 					loadMoreButton.textContent = "Load More";
 					loadMoreButton.disabled = false;

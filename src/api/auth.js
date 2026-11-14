@@ -3,10 +3,8 @@ import { BASE_URL } from "./apiUrl.js";
 export async function apiFetch(endpoint, options = {}) {
 	const url = `${BASE_URL}${endpoint}`;
 	const accessToken = sessionStorage.getItem("accessToken");
-	const apiKey = "e46f8e52-f8c1-4b1c-862b-7cf3567b8a81";
 	const headers = {
 		"Content-Type": "application/json",
-		"X-Noroff-API-Key": apiKey,
 		...options.headers,
 	};
 
