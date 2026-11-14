@@ -1,11 +1,10 @@
 // Contains the event listener for the login form
-export function renderLoginForm() {
+function renderLoginForm() {
 	const container = document.querySelector("#app-content");
 	if (!container) return;
 	container.innerHTML = `
-		<form id="login-form" class="login-form" method="POST">
-			const container = document.getElementById("app");
-			container.innerHTML = "<h1>Welcome to the Post.ly</h1>";
+		<form id="login-form" class="form" method="POST">
+			// const container = document.getElementById("app");
 			<h2>Login</h2>
 
 			<label for="email">Email:</label> 

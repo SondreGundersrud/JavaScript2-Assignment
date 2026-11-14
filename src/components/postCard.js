@@ -1,6 +1,15 @@
 // A function that renders a single post card
+import { post } from "./api/apiClient.js";
 
-import { post } from "./js/api.js";
+export function PostCard({ singlePostCard }) {
+	return `
+    <div class="post-card">
+    <img src="${singlePostCard.image}" alt="${game.title}" />
+	<h2>${game.title}</h2>
+    <p>${game.description}</p>
+    </div>
+`;
+}
 
 async function createNewPost(postData) {
 	try {
@@ -43,4 +52,8 @@ function renderPosts(posts) {
 	});
 }
 
-getParallelDataEfficiently();
+export {
+	getParallelDataEfficiently,
+	createNewPost,
+	renderPosts,
+};

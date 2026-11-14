@@ -83,6 +83,19 @@ footer {
   width: 100%;
 }
 
+button, btn {
+  color: var(--text);
+    text-decoration: none;
+    font-size: 16px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: box-shadow 0.3s;
+
+    &:hover {
+      background-color: var(--primary);
+      color: var(--surface);}
+}
+
 /* 
 -------------------------
 -------NAVIGATION--------
@@ -154,23 +167,43 @@ nav li {
   box-sizing: border-box;
 }
 
-
 /* 
 ------------------------
 ---------FORMS----------
 ------------------------
 */
 
-.container {
+.form {
   width: 100%;
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 24px auto;
   padding: 0 32px;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: left;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+}
+
+.form label {
+  font-weight: bold;
+  margin-bottom: 4px;
+  color: var(--text-muted);
+}
+
+.form input {
+  background-color: var(--background);
+  border: var(--border);
+  border-radius: 6px;
+  color: var(--text);
+  padding: 10px 12px;
 }
 
 /* 
 -------------------------
-------FEED & POSTS-------
+--------- POSTS ---------
 -------------------------
 */
+

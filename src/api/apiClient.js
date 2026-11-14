@@ -1,6 +1,6 @@
 // Documentation: https://docs.noroff.dev/docs/v2
 
-const BASE_URL = "https://v2.api.noroff.dev";
+export const BASE_URL = "https://v2.api.noroff.dev";
 const API_KEY = `${BASE_URL}/auth/create-api-key`;
 const LOGIN = `${BASE_URL}/auth/login`;
 const REGISTER = `${BASE_URL}/auth/register`;
@@ -15,9 +15,7 @@ const SEARCH_PROFILES = `${BASE_URL}/social/profiles/search?q=<query>`;
 
 async function apiClient(endpoint, options = {}) {
 	const { body, ...customOptions } = options;
-	// const accessToken = load("accessToken");
 	const accessToken = localStorage.getItem("accessToken");
-	// const apiKey = load("apiKey");
 	const apiKey = localStorage.getItem("apiKey");
 	const headers = {
 		"Content-Type": "application/json",
@@ -65,6 +63,8 @@ async function apiClient(endpoint, options = {}) {
 export const get = (endpoint) => apiClient(endpoint);
 export const post = (endpoint, body) =>
 	apiClient(endpoint, { body });
+export const patch = (endpoint, body) =>
+	apiClient(endpoint, { method: "PATCH", body });
 export const put = (endpoint, body) =>
 	apiClient(endpoint, { method: "PUT", body });
 export const del = (endpoint) =>

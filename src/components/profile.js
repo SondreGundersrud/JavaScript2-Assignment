@@ -1,15 +1,10 @@
 // A valid user ID
 import { BASE_URL, get, post } from "../api/apiClient.js";
 
-async function displayUserProfile(id) {
-	try {
-		const profile = await get(`/social/profiles/${id}`);
-		// ... render profile
-	} catch (error) {
-		// The error from the apiClient is already descriptive
-		console.error(error.message);
-	}
-}
+const fetchUserDetails = get(`${BASE_URL}/auth/profiles/`);
+const fetchUserPosts = get(
+	`${BASE_URL}/social/posts?sort=created&sortOrder=desc`,
+);
 
 async function createNewPost(postData) {
 	try {
@@ -19,10 +14,6 @@ async function createNewPost(postData) {
 		console.error(error.message);
 	}
 }
-
-const fetchUserDetails = fetch(
-	`${BASE_URL}/auth/profiles/`,
-);
 
 async function displayUserProfile(id) {
 	try {
@@ -39,7 +30,7 @@ async function displayUserProfile(id) {
 	}
 }
 
-export async function loadProfilePage() {
+async function loadProfilePage() {
 	try {
 		const results = await Promise.allSettled([
 			fetchUserDetails,
