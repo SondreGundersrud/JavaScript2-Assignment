@@ -1,5 +1,5 @@
 // A function that renders a single post card
-import { post } from "./api/apiClient.js";
+import { post } from "../api/apiClient.js";
 
 export function PostCard({ singlePostCard }) {
 	return `

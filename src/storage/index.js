@@ -1,30 +1,24 @@
-// Reusable save(), load(), remove() functions
+import { get, post } from "..api/authService.js";
+import { POSTS } from "./api/apiUrl.js";
 
-import { get } from "./api/apiClient.js";
-
-apiClient.post("/social/posts", postData);
-
-async function fetchAllPosts() {
-	const response = await fetch(POSTS);
-	return response.json();
+// login sends credentials to the API and stores the returned accessToken
+export async function login(email, password) {
+	const credentials = { email, password };
+	try {
+		const response = await post("/auth/login", credentials);
+		const accessToken = response.data.accessToken;
+		sessionStorage.setItem("accessToken", accessToken);
+		console.log(
+			"Logged in successfully. Token saved to localStorage.",
+		);
+	} catch (error) {
+		console.error("Login failed:", error.message);
+	}
 }
 
-async function displayPosts() {
-	const postsResponse = await fetchAllPosts();
-	const sorted = sortPostsByDate(postsResponse.data);
-	renderPosts(sorted);
-}
-
-const postsEndpoint = "/feed";
-
-export function getAllposts() {
-	return get(postsEndpoint);
-}
-
-export function getpostById(id) {
-	return get(`${postsEndpoint}/${id}`);
-}
-
-export function getRandompost() {
-	return get(`${postsEndpoint}/random`);
+export function logout() {
+	sessionStorage.removeItem("accessToken");
+	console.log(
+		"User has been logged out. Token removed from localStorage.",
+	);
 }

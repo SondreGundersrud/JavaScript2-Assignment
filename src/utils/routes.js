@@ -5,8 +5,8 @@ import { renderFeedPage } from "../components/feed.js";
 
 export const routes = {
 	"/": () => {
-		const token = localStorage.getItem("token");
-		if (token) {
+		const accessToken = localStorage.getItem("accessToken");
+		if (accessToken) {
 			window.location.href = "/feed";
 		} else {
 			window.location.href = "/login";

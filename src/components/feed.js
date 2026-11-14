@@ -1,66 +1,63 @@
-import { get } from "../api/apiClient.js";
-import { renderPosts } from "./components/postCard.js";
+import { BASE_URL, get } from "../api/apiClient.js";
+import { renderPosts } from "./postCard.js";
 
-// document
-// 	.createElement("button")
-// 	.addEventListener("click", () => {
-// 		const PostsContainer = document.getElementById(
-// 			"Posts-container",
-// 		);
-// 		const loadMoreButton =
-// 			document.getElementById("load-more-btn");
+export async function renderFeedPage() {}
 
-// 		// State variable to keep track of the current page
-// 		let currentPage = 1;
-// 		let isFetching = false;
+document
+	.createElement("button")
+	.addEventListener("click", () => {
+		const PostsContainer = document.getElementById(
+			"Posts-container",
+		);
+		const loadMoreButton =
+			document.getElementById("load-more-btn");
 
-// 		// Function to fetch a page of Posts and render them
-// 		async function fetchAndRenderPosts(page) {
-// 			isFetching = true;
-// 			loadMoreButton.textContent = "Loading...";
-// 			loadMoreButton.disabled = true;
+		// State variable to keep track of the current page
+		let currentPage = 1;
+		let isFetching = false;
 
-// 			try {
-// 				const response = await get(
-// 					`/posts?page=${page}&limit=5`,
-// 				);
-// 				const Posts = response.data;
-// 				const meta = response.meta;
+		// Function to fetch a page of Posts and render them
+		async function fetchAndRenderPosts(page) {
+			isFetching = true;
+			loadMoreButton.textContent = "Loading...";
+			loadMoreButton.disabled = true;
 
-// 				// Append new Posts to the container
-// 				Posts.forEach((game) => {
-// 					const gameElement = document.createElement("div");
-// 					gameElement.textContent = game.name;
-// 					PostsContainer.appendChild(gameElement);
-// 				});
+			try {
+				const response = await get(
+					`/posts?page=${page}&limit=5`,
+				);
+				const Posts = response.data;
+				const meta = response.meta;
 
-// 				// Update the button based on the meta data
-// 				if (meta.isLastPage) {
-// 					loadMoreButton.style.display = "none"; // Hide button if no more pages
-// 				} else {
-// 					loadMoreButton.textContent = "Load More";
-// 					loadMoreButton.disabled = false;
-// 				}
-// 			} catch (error) {
-// 				console.error("Failed to fetch Posts:", error);
-// 				loadMoreButton.textContent =
-// 					"Failed to load. Try again?";
-// 				loadMoreButton.disabled = false;
-// 			} finally {
-// 				isFetching = false;
-// 			}
-// 		}
+				// Append new Posts to the container
+				Posts.forEach((posts) => {
+					const gameElement = document.createElement("div");
+					gameElement.textContent = posts.name;
+					PostsContainer.appendChild(gameElement);
+				});
 
-// 		// Event listener for the button
-// 		loadMoreButton.addEventListener("click", () => {
-// 			if (!isFetching) {
-// 				currentPage++; // Increment the page number
-// 				fetchAndRenderPosts(currentPage);
-// 			}
-// 		});
-// 	});
+				// Update the button based on the meta data
+				if (meta.isLastPage) {
+					loadMoreButton.style.display = "none"; // Hide button if no more pages
+				} else {
+					loadMoreButton.textContent = "Load More";
+					loadMoreButton.disabled = false;
+				}
+			} catch (error) {
+				console.error("Failed to fetch Posts:", error);
+				loadMoreButton.textContent =
+					"Failed to load. Try again?";
+				loadMoreButton.disabled = false;
+			} finally {
+				isFetching = false;
+			}
+		}
 
-// Initial load
-// fetchAndRenderPosts(currentPage);
-
-// getPostDetailsQuickly();
+		// Event listener for the button
+		loadMoreButton.addEventListener("click", () => {
+			if (!isFetching) {
+				currentPage++; // Increment the page number
+				fetchAndRenderPosts(currentPage);
+			}
+		});
+	});

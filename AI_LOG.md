@@ -25,3 +25,6 @@ Asked for help to explain how to route properly based on what Noroff taught me, 
 
 November 13th, 2026:
 Asked Gemini to explain why I was not making any progress so I could try another approach. Had some help debugging different code in routes.js and Router.js, but I'm still not being able to properly import these functions and files to the main.js. Will have to look into this tomorrow. In theory, thing should start to render but alas.
+
+November 14th, 2026:
+Asked Gemini to help me understand how to implement and secure sessions with cookies, HttpOnly and Secure. Information provided by Noroff and MDN Web Docs was not enough for me to understand it. It argued that the api-server is secure as is, and said localStorage would suffice. AI has also helped me with feedback on my approach to fix my issues with auth/login/reg etc.

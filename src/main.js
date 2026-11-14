@@ -16,7 +16,18 @@ import {
 } from "./components/profile.js";
 import { Router } from "./utils/Router.js";
 import { routes } from "./utils/routes.js";
-import { get } from "./api/apiClient.js";
+import { get } from "./api/authService.js";
+
+// Import auth functions
+import { login, logout } from "./storage/index.js";
+
+// Test login — replace with a valid registered Noroff account
+await login("your@email.com", "yourPassword");
+
+// Inspect localStorage in DevTools > Application > Local Storage to see the token
+
+// Then test logout
+logout();
 
 // Get the element where content will be rendered
 const contentElement =
