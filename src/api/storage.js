@@ -1,4 +1,4 @@
-import { get, post } from "..api/authService.js";
+import { get, post } from "..api/auth.js";
 import { POSTS } from "./api/apiUrl.js";
 
 // login sends credentials to the API and stores the returned accessToken

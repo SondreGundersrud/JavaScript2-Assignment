@@ -4,9 +4,9 @@ import { post } from "../api/apiClient.js";
 export function PostCard({ singlePostCard }) {
 	return `
     <div class="post-card">
-    <img src="${singlePostCard.image}" alt="${game.title}" />
-	<h2>${game.title}</h2>
-    <p>${game.description}</p>
+    <img src="${singlePostCard.image}" alt="${posts.title}" />
+	<h2>${posts.title}</h2>
+    <p>${posts.description}</p>
     </div>
 `;
 }

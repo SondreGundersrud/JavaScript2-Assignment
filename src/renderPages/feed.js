@@ -1,5 +1,5 @@
 import { BASE_URL, get } from "../api/apiClient.js";
-import { renderPosts } from "./postCard.js";
+import { renderPosts } from "./posts.js";
 
 export async function renderFeedPage() {}
 

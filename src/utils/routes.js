@@ -1,7 +1,7 @@
-import { renderRegisterForm } from "../components/registerForm.js";
-import { renderLoginForm } from "../components/loginForm.js";
-import { renderProfilePage } from "../components/profile.js";
-import { renderFeedPage } from "../components/feed.js";
+import { renderRegisterForm } from "../pages/register.js";
+import { renderLoginForm } from "../pages/login.js";
+import { renderProfilePage } from "../pages/profile.js";
+import { renderFeedPage } from "../pages/feed.js";
 
 export const routes = {
 	"/": () => {
