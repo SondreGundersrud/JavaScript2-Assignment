@@ -6,8 +6,9 @@ import {
 	onRegisterFormSubmit,
 } from "./renderPages/register.js";
 import {
+	isAuthenticated,
 	renderLoginForm,
-	onLoginFormSubmit,
+	attachLoginListener,
 } from "./renderPages/login.js";
 import {
 	loadProfilePage,

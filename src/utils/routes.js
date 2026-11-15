@@ -1,7 +1,7 @@
 import { renderRegisterForm } from "../renderPages/register.js";
 import { renderLoginForm } from "../renderPages/login.js";
-import { renderProfilePage } from "../renderPages/profile.js";
-import { renderFeedPage } from "../renderPages/feed.js";
+// import { renderProfilePage } from "../renderPages/profile.js";
+// import { renderFeedPage } from "../renderPages/feed.js";
 import { isAuthenticated } from "../renderPages/login.js";
 
 export const routes = {

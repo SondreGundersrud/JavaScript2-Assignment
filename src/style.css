@@ -207,3 +207,6 @@ nav li {
 -------------------------
 */
 
+.post-card {
+  display: flex;
+}

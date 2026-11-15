@@ -1,7 +1,7 @@
 // A function that renders a single post card
-import { post } from "../api/apiClient.js";
+import { post } from "../api/auth.js";
 
-export function PostCard({ singlePostCard }) {
+export async function PostCard({ singlePostCard }) {
 	return `
     <div class="post-card">
     <img src="${singlePostCard.image}" alt="${posts.title}" />
@@ -11,7 +11,7 @@ export function PostCard({ singlePostCard }) {
 `;
 }
 
-async function createNewPost(postData) {
+export async function createNewPost(postData) {
 	try {
 		const newPost = await post("/social/posts", postData);
 		// ... do something with new post
@@ -20,7 +20,7 @@ async function createNewPost(postData) {
 	}
 }
 
-async function getParallelDataEfficiently() {
+export async function getParallelDataEfficiently() {
 	console.time("EfficientParallel");
 	console.log("Starting user and product fetches...");
 
@@ -40,7 +40,7 @@ async function getParallelDataEfficiently() {
 }
 
 // A function that renders a single post card
-function renderPosts(posts) {
+export async function renderPosts(posts) {
 	const container = document.getElementById(
 		"posts-container",
 	);
@@ -51,9 +51,3 @@ function renderPosts(posts) {
 		container.appendChild(postElement);
 	});
 }
-
-export {
-	getParallelDataEfficiently,
-	createNewPost,
-	renderPosts,
-};

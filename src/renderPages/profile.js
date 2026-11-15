@@ -1,10 +1,11 @@
 // A valid user ID
-import { BASE_URL, get, post } from "../api/apiClient.js";
+import { BASE_URL } from "../api/apiUrl.js";
+import { post } from "../api/auth.js";
 
-const fetchUserDetails = get(`${BASE_URL}/auth/profiles/`);
-const fetchUserPosts = get(
-	`${BASE_URL}/social/posts?sort=created&sortOrder=desc`,
-);
+// const fetchUserDetails = get(`${BASE_URL}/auth/profiles/`);
+// const fetchUserPosts = get(
+// 	`${BASE_URL}/social/posts?sort=created&sortOrder=desc`,
+// );
 
 async function createNewPost(postData) {
 	try {

@@ -1,7 +1,8 @@
-import { BASE_URL, get } from "../api/apiClient.js";
+import { BASE_URL } from "../api/apiUrl.js";
+import { get } from "../api/auth.js";
 import { renderPosts } from "./posts.js";
 
-export async function renderFeedPage() {}
+// export async function renderFeedPage() {}
 
 document
 	.createElement("button")
