@@ -1,24 +1,50 @@
 import { get, isAuthenticated } from "../api/auth.js";
 
+//VSC Copilot suggested to add function escapeHtml and const postCards after I had tried to fix the fetchAllPosts() after debugging for close to one hour. This code is not 100% mine, but after asking for explainations, I understood it better. Almost all errors have gone away for now.
+function escapeHtml(value) {
+	return String(value ?? "").replace(
+		/[&<>"']/g,
+		(char) =>
+			({
+				"&": "&amp;",
+				"<": "&lt;",
+				">": "&gt;",
+				'"': "&quot;",
+				"'": "&#39;",
+			})[char],
+	);
+}
+
 export async function fetchAllPosts() {
 	if (!isAuthenticated()) {
 		throw new Error(
 			"You must be logged in to fetch and view posts.",
 		);
-	}}
+	}
+
 	try {
-		const { data: posts } = await get("/social/posts");
+		const postCards = posts
+			.map(
+				(post) => `
+            <article class="post-card">
+                <h2>${escapeHtml(post.title || "Untitled post")}</h2>
+                <p>${escapeHtml(post.body || "")}</p>
+                <p class="post-author">By ${escapeHtml(post.author?.name || "Unknown")}</p>
+            </article>
+        `,
+			)
+			.join("");
+
 		return `
-		<section class="feed">
-		<div class="posts-container">${posts.map((post) => <particle class="post-card">
-			<h2>${(post.title || "Untitled post")}</h2>
-			<p>${(post.body || "")}</p>
-			<p class="post-author">By ${(post.author?.name || "Unknown")}</p></article></div></section>);}
+            <section class="feed">
+                <div class="posts-container">${postCards}</div>
+            </section>
+        `;
 	} catch (error) {
 		console.error("Failed to fetch posts:", error);
 		throw error;
-		}
-		}
+	}
+}
 
 document
 	.createElement("button")
