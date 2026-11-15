@@ -43,7 +43,7 @@ export class Router {
 		const view = this.routes[path] || notFoundView;
 		// Use 'await' to wait for the view function to finish
 		// (e.g., finish fetching data) before rendering.
-		this.contentElement.innerHTML = await view();
+		this.contentElement.innerHTML = await handleRoute(path);
 		if (typeof this.onAfterRender === "function") {
 			this.onAfterRender(path);
 		}

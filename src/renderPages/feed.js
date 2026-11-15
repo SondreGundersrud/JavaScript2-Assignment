@@ -23,6 +23,7 @@ export async function fetchAllPosts() {
 	}
 
 	try {
+		const { data: posts } = await get("/social/posts");
 		const postCards = posts
 			.map(
 				(post) => `
