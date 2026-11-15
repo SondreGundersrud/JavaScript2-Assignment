@@ -1,9 +1,9 @@
 # JavaScript2-Assignment: Post.ly
 
 ## Noroff JavaScript2 Assignment
-This assignment is tasked to test me to make a functional front-end social media application using JavaScript, while demonstrating the required learning outcomes in knowledge, skills, and general competence.
+**This assignment is unfortunately still work in progress.**
 
-**This assignment is still work in progress.**
+This assignment is tasked to test me to make a functional front-end social media application using JavaScript, while demonstrating the required learning outcomes in knowledge, skills, and general competence.
 
 ### Demonstration account:
 **Please use this premade account to log in:**
