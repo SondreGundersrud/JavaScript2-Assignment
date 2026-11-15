@@ -29,11 +29,10 @@ Login and registration requires a valid email address containing _@stud.noroff.n
 * `npm` (included with Node.js)
 
 ### Installation
-1. Clone repository into your terminal: git clone [https://github.com/SondreGundersrud/JavaScript2-Assignment.git]
-2. Use command: npm install1. Clone the repository:
+Clone the repository and navigate into the project directory:
    ```bash
-   git clone https://github.com
-   cd project-name
+   git clone https://github.com/SondreGundersrud/JavaScript2-Assignment.git
+   cd JavaScript2-Assignment
    ```
 
 2. Install the project dependencies:
