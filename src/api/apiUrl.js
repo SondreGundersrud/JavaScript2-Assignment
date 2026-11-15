@@ -1,7 +1,7 @@
 // Documentation: https://docs.noroff.dev/docs/v2
 
 export const BASE_URL = "https://v2.api.noroff.dev";
-// export const API_KEY = `${BASE_URL}/auth/create-api-key`;
+export const API_KEY = `${BASE_URL}/auth/create-api-key`;
 export const LOGIN = `${BASE_URL}/auth/login`;
 export const REGISTER = `${BASE_URL}/auth/register`;
 export const POSTS = `${BASE_URL}/social/posts`;

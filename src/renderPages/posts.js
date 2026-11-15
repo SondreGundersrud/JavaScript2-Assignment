@@ -1,7 +1,7 @@
 // A function that renders a single post card
 import { post } from "../api/auth.js";
 
-export async function PostCard({ singlePostCard }) {
+export async function singlePostCard({ singlePostCard }) {
 	return `
     <div class="post-card">
     <img src="${singlePostCard.image}" alt="${posts.title}" />
@@ -18,25 +18,6 @@ export async function createNewPost(postData) {
 	} catch (error) {
 		console.error(error.message);
 	}
-}
-
-export async function getParallelDataEfficiently() {
-	console.time("EfficientParallel");
-	console.log("Starting user and product fetches...");
-
-	// Start both operations without awaiting them
-	const userPromise = fetchUser(1);
-	const productsPromise = fetchProducts();
-
-	// Now, wait for both to finish in parallel
-	const [user, products] = await Promise.all([
-		userPromise,
-		productsPromise,
-	]);
-
-	console.log("Both fetches have completed.");
-	console.timeEnd("EfficientParallel"); // Total time: ~1000ms (the duration of the longest promise)
-	return { user, products };
 }
 
 // A function that renders a single post card

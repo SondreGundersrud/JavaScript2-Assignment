@@ -1,8 +1,26 @@
-import { BASE_URL } from "../api/apiUrl.js";
-import { get } from "../api/auth.js";
-import { renderPosts } from "./posts.js";
+import { POSTS } from "../api/apiUrl.js";
+import { get, isAuthenticated } from "../api/auth.js";
 
-// export async function renderFeedPage() {}
+export async function fetchAllPosts() {
+	if (!isAuthenticated()) {
+		throw new Error(
+			"You must be logged in to fetch and view posts.",
+		);
+	}
+	const postsUrl = `${POSTS}`;
+	try {
+		const response = await fetch(postsUrl);
+		if (!response.ok) {
+			throw new Error(
+				`Request failed with status: ${response.status}`,
+			);
+		}
+		return await response.json();
+	} catch (error) {
+		console.error("Failed to fetch posts:", error);
+		throw error;
+	}
+}
 
 document
 	.createElement("button")
@@ -34,7 +52,7 @@ document
 				Posts.forEach((posts) => {
 					const gameElement = document.createElement("div");
 					gameElement.textContent = posts.name;
-					PostsContainer.appendChild(gameElement);
+					PostsContainer.appendChild(postElement);
 				});
 
 				// Update the button based on the meta data

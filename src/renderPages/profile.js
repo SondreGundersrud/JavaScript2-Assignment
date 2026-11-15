@@ -7,16 +7,7 @@ import { post } from "../api/auth.js";
 // 	`${BASE_URL}/social/posts?sort=created&sortOrder=desc`,
 // );
 
-async function createNewPost(postData) {
-	try {
-		const newPost = await post("/social/posts", postData);
-		// ... do something with new post
-	} catch (error) {
-		console.error(error.message);
-	}
-}
-
-async function displayUserProfile(id) {
+export async function renderProfilePage(id) {
 	try {
 		const response = await fetch(
 			`${BASE_URL}/social/profiles/${id}`,
@@ -31,7 +22,7 @@ async function displayUserProfile(id) {
 	}
 }
 
-async function loadProfilePage() {
+export async function loadProfilePage() {
 	try {
 		const results = await Promise.allSettled([
 			fetchUserDetails,
@@ -58,7 +49,6 @@ async function loadProfilePage() {
 				"<h1>Error: Could not load user profile.</h1>";
 			return;
 		}
-
 		if (postsResult.status === "fulfilled") {
 			const response = postsResult.value;
 			if (!response.ok)
@@ -80,9 +70,3 @@ async function loadProfilePage() {
 		console.error("A network error occurred:", error);
 	}
 }
-
-export {
-	loadProfilePage,
-	displayUserProfile,
-	createNewPost,
-};

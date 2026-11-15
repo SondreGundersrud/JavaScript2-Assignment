@@ -1,9 +1,5 @@
 import { post } from "../api/auth.js";
 
-export function isAuthenticated() {
-	return Boolean(sessionStorage.getItem("accessToken"));
-}
-
 export function renderLoginForm() {
 	return `
         <form id="login-form" class="form" method="POST">
@@ -42,9 +38,9 @@ export async function login(email, password) {
 	try {
 		const response = await post("/auth/login", credentials);
 		const accessToken = response.data.accessToken;
-		sessionStorage.setItem("accessToken", accessToken);
+		localStorage.setItem("accessToken", accessToken);
 		console.log(
-			"Logged in successfully. Token saved to sessionStorage.",
+			"Logged in successfully. Token saved to localStorage.",
 		);
 		return true;
 	} catch (error) {
@@ -53,9 +49,23 @@ export async function login(email, password) {
 	}
 }
 
+/**
+ * Registers a click handler on the logout button.
+ * When clicked, it removes the access token and redirects to the login page.
+ * Does nothing if no element with the ID "logout" exists.
+ *
+ * @returns {void}
+ */
 export function logout() {
-	sessionStorage.removeItem("accessToken");
-	console.log(
-		"User has been logged out. Token removed from sessionStorage.",
-	);
+	const logoutButton = document.querySelector("#logout");
+	if (!logoutButton) return;
+
+	logout.addEventListener("click", (event) => {
+		event.preventDefault();
+		localStorage.removeItem("accessToken");
+		window.location.replace("/login");
+		console.log(
+			"User has been logged out. Token removed from localStorage. User directed to login page.",
+		);
+	});
 }

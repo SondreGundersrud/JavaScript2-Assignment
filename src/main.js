@@ -12,16 +12,16 @@ import {
 } from "./renderPages/login.js";
 import {
 	loadProfilePage,
-	displayUserProfile,
-	createNewPost,
+	renderProfilePage,
 } from "./renderPages/profile.js";
-import { Router } from "./utils/Router.js";
+import { handleRoute, Router } from "./utils/Router.js";
 import { routes } from "./utils/routes.js";
 import { get } from "./api/auth.js";
 
-// logout();
-
-// Get the element where content will be rendered
+/** The root element where routed page content is rendered.
+ * @constant
+ * @type {HTMLElement | null}
+ */
 const contentElement =
 	document.getElementById("app-content");
 
