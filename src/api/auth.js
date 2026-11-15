@@ -67,7 +67,6 @@ export async function apiFetch(endpoint, options = {}) {
 	const response = await fetch(`${BASE_URL}${endpoint}`, {
 		...options,
 		headers: {
-			"Content-Type": "application/json",
 			...options.headers,
 			...(localStorage.getItem(API_KEY_STORAGE_KEY) && {
 				"X-Noroff-API-Key": localStorage.getItem(

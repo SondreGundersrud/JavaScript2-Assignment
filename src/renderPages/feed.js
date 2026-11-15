@@ -1,4 +1,3 @@
-import { POSTS } from "../api/apiUrl.js";
 import { get, isAuthenticated } from "../api/auth.js";
 
 export async function fetchAllPosts() {
@@ -6,21 +5,20 @@ export async function fetchAllPosts() {
 		throw new Error(
 			"You must be logged in to fetch and view posts.",
 		);
-	}
-	const postsUrl = `${POSTS}`;
+	}}
 	try {
-		const response = await fetch(postsUrl);
-		if (!response.ok) {
-			throw new Error(
-				`Request failed with status: ${response.status}`,
-			);
-		}
-		return await response.json();
+		const { data: posts } = await get("/social/posts");
+		return `
+		<section class="feed">
+		<div class="posts-container">${posts.map((post) => <particle class="post-card">
+			<h2>${(post.title || "Untitled post")}</h2>
+			<p>${(post.body || "")}</p>
+			<p class="post-author">By ${(post.author?.name || "Unknown")}</p></article></div></section>);}
 	} catch (error) {
 		console.error("Failed to fetch posts:", error);
 		throw error;
-	}
-}
+		}
+		}
 
 document
 	.createElement("button")

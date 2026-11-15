@@ -6,7 +6,6 @@ import {
 	onRegisterFormSubmit,
 } from "./renderPages/register.js";
 import {
-	isAuthenticated,
 	renderLoginForm,
 	attachLoginListener,
 } from "./renderPages/login.js";
@@ -16,7 +15,7 @@ import {
 } from "./renderPages/profile.js";
 import { handleRoute, Router } from "./utils/Router.js";
 import { routes } from "./utils/routes.js";
-import { get } from "./api/auth.js";
+import { get, isAuthenticated } from "./api/auth.js";
 
 /** The root element where routed page content is rendered.
  * @constant
