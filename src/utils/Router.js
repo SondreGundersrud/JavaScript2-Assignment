@@ -40,12 +40,11 @@ export class Router {
 	// Find the correct view and render it
 	async resolveRoute() {
 		const path = window.location.pathname;
-		const view = this.routes[path] || notFoundView;
-		// Use 'await' to wait for the view function to finish
-		// (e.g., finish fetching data) before rendering.
 		this.contentElement.innerHTML = await handleRoute(path);
+
+		const renderedPath = window.location.pathname;
 		if (typeof this.onAfterRender === "function") {
-			this.onAfterRender(path);
+			this.onAfterRender(renderedPath);
 		}
 	}
 }

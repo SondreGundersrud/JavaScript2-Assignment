@@ -28,6 +28,12 @@ const contentElement =
 const router = new Router(routes, contentElement);
 
 // Handle initial page load
+router.onAfterRender = (path) => {
+	if (path === "/login") {
+		attachLoginListener(() => router.navigate("/feed"));
+	}
+};
+
 router.resolveRoute();
 
 // Hijack link clicks
